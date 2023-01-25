@@ -13,6 +13,5 @@ export function fetchEndpoint(key) {
         "https://us-central1-ti-reactjs-test.cloudfunctions.net/app/api/user";
       break;
   }
-
   return defaultUrl;
 }
