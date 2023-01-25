@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { headerParamsForPost } from "../actions/Helpers";
 import { fetchEndpoint } from "../actions/Endpoints";
+import Loading  from "./Loading";
 import axios from "axios";
 import Header from "./Header";
 import { Link } from "react-router-dom";
@@ -74,7 +75,7 @@ function Dashboard() {
     );
   };
 
-  return domUpdateStatus === 0 ? "" : renderOnLoadDom();
+  return domUpdateStatus === 0 ? (<Loading/>) : renderOnLoadDom();
 }
 
 export default Dashboard;
