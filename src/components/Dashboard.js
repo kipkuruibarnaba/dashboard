@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import { headerParamsForPost } from "../actions/Helpers";
 import { fetchEndpoint } from "../actions/Endpoints";
 import axios from "axios";
-// import $ from "jquery";
-// import 'datatables.net-responsive-bs5'
-// import "datatables.net-bs5/js/dataTables.bootstrap5.js";
-// import "datatables.net-bs5/css/dataTables.bootstrap5.css";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 
@@ -15,9 +11,9 @@ function Dashboard() {
   const [dataAvaillable, setDataAvaillable] = useState(true);
   if (dataAvaillable) {
     axios
-      .get(fetchEndpoint(1), headerParamsForPost())
+      .get(fetchEndpoint(0), headerParamsForPost())
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setFetchedData(response.data);
         setDomUpdateStatus(response.data);
       })
@@ -36,10 +32,6 @@ function Dashboard() {
 
   console.log(dataAvaillable);
   const renderOnLoadDom = () => {
-    //   $(document).ready(function () {
-    //     // $.fn.dataTable.ext.errMode = 'none';
-    //     $('#allTransaction').DataTable();
-    // });
     let no = 1;
     return (
       <div className="container">
@@ -68,10 +60,9 @@ function Dashboard() {
                     <td>{item.occupation}</td>
                     <td>{item.bio}</td>
                     <td>
-                      {/* <button className="btn btn-danger">View</button> */}
-                      <Link to ={"view" }>
-                                        <button  className="btn btn-danger">View</button>
-                                        </Link>
+                      <Link to={`view/${item.id}`}>
+                        <button className="btn btn-danger">Edit</button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
